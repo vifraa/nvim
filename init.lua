@@ -127,7 +127,8 @@ require("lazy").setup({
 
   require 'plugins.nvim-tree',
   require 'plugins.leap',
-  require 'plugins.nvim-autopairs'
+  require 'plugins.nvim-autopairs',
+  require 'plugins.lazygit'
 }, {})
 
 -- [[ Setting options ]]
@@ -237,6 +238,9 @@ vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { des
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind [H]elp" })
 vim.keymap.set("n", "<leader>fw", require("telescope.builtin").grep_string, { desc = "[F]ind current [W]ord" })
 vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[F]ind [D]iagnostics" })
+
+vim.keymap.set("n", "<leader>gg", ":LazyGit<cr>", { desc = "Open LazyGit"})
+vim.keymap.set("n", "<leader>gG", ":LazyGitFilterCurrentFile<cr>", { desc = "Open LazyGit commit history for current file"})
 
 
 -- FileTree keymaps
