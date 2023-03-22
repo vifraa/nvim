@@ -125,7 +125,8 @@ require("lazy").setup({
 	},
 
 
-  require 'plugins.nvim-tree'
+  require 'plugins.nvim-tree',
+  require 'plugins.leap',
 }, {})
 
 -- [[ Setting options ]]
