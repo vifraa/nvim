@@ -8,7 +8,7 @@ return {
 		require("nvim-tree").setup {
 			view = {
 				side = "right",
-				width = 45
+				width = {}
 			}
 
 		}
