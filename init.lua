@@ -187,7 +187,9 @@ vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window verically"})
 vim.keymap.set("n", "<leader>wd", "<C-w>c", { desc = "Delete current window"})
 
 -- Buffers
-vim.keymap.set("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Delete current buffer"})
+-- Delete current buffer without closing the current window.
+-- https://stackoverflow.com/questions/1444322/how-can-i-close-a-buffer-without-closing-the-window
+vim.keymap.set("n", "<leader>bd", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Delete current buffer"})
 
 
 -- Remap for dealing with word wrap
