@@ -186,6 +186,9 @@ vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split window horizontally"
 vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window verically"})
 vim.keymap.set("n", "<leader>wd", "<C-w>c", { desc = "Delete current window"})
 
+-- Buffers
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Delete current buffer"})
+
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
