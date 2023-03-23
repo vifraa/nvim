@@ -182,10 +182,17 @@ vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Move to window left"})
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Move to window down"})
 vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Move to window up"})
 vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Move to window right"})
+
 -- Window splitting
 vim.keymap.set("n", "<leader>ws", "<C-w>s<C-w>j", { desc = "Split window horizontally"})
 vim.keymap.set("n", "<leader>wv", "<C-w>v<C-w>l", { desc = "Split window verically"})
 vim.keymap.set("n", "<leader>wd", "<C-w>c", { desc = "Delete current window"})
+
+-- Window resizing
+vim.keymap.set("n", "<leader>w=", "<C-w>=", { desc = "Equal high and wide"})
+vim.keymap.set("n", "<leader>w+", "5<C-w>+", { desc = "Increase height"})
+vim.keymap.set("n", "<leader>w-", "5<C-w>-", { desc = "Decrease height"})
+
 
 -- Buffers
 -- Delete current buffer without closing the current window.
