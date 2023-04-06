@@ -126,7 +126,6 @@ require("lazy").setup({
 
 
   require 'plugins.nvim-tree',
-  require 'plugins.leap',
   require 'plugins.nvim-autopairs',
   require 'plugins.lazygit'
 }, {})
