@@ -225,6 +225,13 @@ require("telescope").setup({
 			},
 		},
 	},
+  pickers = {
+    buffers = {
+      ignore_current_buffer = true,
+      sort_mru = true
+    }
+
+  }
 })
 
 -- Enable telescope fzf native, if installed
@@ -233,6 +240,7 @@ pcall(require("telescope").load_extension, "fzf")
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
+vim.keymap.set("n", "<leader>,", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>/", require("telescope.builtin").live_grep, { desc = "[/] Fuzzily search in current buffer" })
 
 vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]find [F]iles" })
