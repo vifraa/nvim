@@ -31,7 +31,7 @@ require("lazy").setup({
   "tpope/vim-sleuth",
 
   {
-   -- LSP Configuration & Plugins
+    -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -47,7 +47,7 @@ require("lazy").setup({
   },
 
   {
-   -- Autocompletion
+    -- Autocompletion
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
   },
@@ -55,7 +55,7 @@ require("lazy").setup({
   -- Discoverability
   { "folke/which-key.nvim",          opts = {} },
   {
-   -- Adds git releated signs to the gutter, as well as utilities for managing changes
+    -- Adds git releated signs to the gutter, as well as utilities for managing changes
     "lewis6991/gitsigns.nvim",
     opts = {
       -- See `:help gitsigns.txt`
@@ -70,7 +70,7 @@ require("lazy").setup({
   },
 
   {
-   -- Theme inspired by Atom
+    -- Theme inspired by Atom
     "navarasu/onedark.nvim",
     priority = 1000,
     config = function()
@@ -79,7 +79,7 @@ require("lazy").setup({
   },
 
   {
-   -- Set lualine as statusline
+    -- Set lualine as statusline
     "nvim-lualine/lualine.nvim",
     -- See `:help lualine.txt`
     opts = {
@@ -93,7 +93,7 @@ require("lazy").setup({
   },
 
   {
-   -- Add indentation guides even on blank lines
+    -- Add indentation guides even on blank lines
     "lukas-reineke/indent-blankline.nvim",
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
@@ -121,7 +121,7 @@ require("lazy").setup({
   },
 
   {
-   -- Highlight, edit, and navigate code
+    -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
@@ -248,7 +248,7 @@ vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc =
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>,", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>/", require("telescope.builtin").live_grep,
-{ desc = "[/] Fuzzily search in current buffer" })
+  { desc = "[/] Fuzzily search in current buffer" })
 
 vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]find [F]iles" })
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind [H]elp" })
@@ -257,7 +257,7 @@ vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { de
 
 vim.keymap.set("n", "<leader>gg", ":LazyGit<cr>", { desc = "Open LazyGit" })
 vim.keymap.set("n", "<leader>gG", ":LazyGitFilterCurrentFile<cr>",
-{ desc = "Open LazyGit commit history for current file" })
+  { desc = "Open LazyGit commit history for current file" })
 
 
 -- FileTree keymaps
