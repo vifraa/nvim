@@ -213,6 +213,7 @@ vim.keymap.set("n", "<leader>w-", "5<C-w>-", { desc = "Decrease height" })
 -- Delete current buffer without closing the current window.
 -- https://stackoverflow.com/questions/1444322/how-can-i-close-a-buffer-without-closing-the-window
 vim.keymap.set("n", "<leader>bd", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Delete current buffer" })
+vim.keymap.set("n", "<leader>bD", ":%bd|e#<CR>", { desc = "Delete other buffers" })
 
 
 -- Remap for dealing with word wrap
