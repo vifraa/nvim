@@ -74,7 +74,16 @@ require("lazy").setup({
     "navarasu/onedark.nvim",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("onedark")
+      -- vim.cmd.colorscheme("onedark")
+    end,
+  },
+
+  {
+    -- Theme inspired by Atom
+    "folke/tokyonight.nvim",
+    priority = 1001,
+    config = function()
+      vim.cmd.colorscheme("tokyonight")
     end,
   },
 
@@ -85,7 +94,7 @@ require("lazy").setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = "onedark",
+        theme = "tokyonight",
         component_separators = "|",
         section_separators = "",
       },
@@ -401,7 +410,7 @@ local on_attach = function(_, bufnr)
 end
 
 -- Attempt to format the buffer on save using lsp
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+-- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
