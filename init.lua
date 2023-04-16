@@ -142,7 +142,6 @@ require("lazy").setup({
 
 
   require 'plugins.oil',
-  require 'plugins.neorg',
   require 'plugins.nvim-tree',
   require 'plugins.nvim-autopairs',
   require 'plugins.lazygit'
