@@ -138,7 +138,12 @@ require("lazy").setup({
       pcall(require("nvim-treesitter.install").update({ with_sync = true }))
     end,
   },
-
+  {
+    "kelly-lin/ranger.nvim",
+    config = function()
+      require("ranger-nvim").setup({ replace_netrw = true })
+    end,
+  },
 
   require 'plugins.oil',
   require 'plugins.nvim-tree',
@@ -260,7 +265,9 @@ vim.keymap.set("n", "<leader>,", require("telescope.builtin").buffers, { desc = 
 vim.keymap.set("n", "<leader>/", require("telescope.builtin").live_grep,
   { desc = "[/] Fuzzily search in current buffer" })
 
-vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]find [F]iles" })
+
+vim.keymap.set("n", "<leader>ff", require("ranger-nvim").open, { desc = "[Find] [Files] from current directory"})
+vim.keymap.set("n", "<leader>pf", require("telescope.builtin").find_files, { desc = "[P]project [F]iles" })
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind [H]elp" })
 vim.keymap.set("n", "<leader>fw", require("telescope.builtin").grep_string, { desc = "[F]ind current [W]ord" })
 vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[F]ind [D]iagnostics" })
