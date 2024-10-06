@@ -258,16 +258,46 @@ require("telescope").setup({
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")
 
+local utils = require("telescope.utils")
+
+local getProjectWorkingDirectory = function()
+  -- Attempt 1, get git root.
+  local result = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+  if vim.v.shell_error ~= 0 and #vim.lsp.get_active_clients() > 0 then
+    -- Attempt 2 if no git directory, find from LSP root.
+    result = vim.lsp.get_active_clients()[1].config.root_dir
+  elseif vim.v.shell_error ~= 0 then
+    -- Attempt 3 / Fallback to current directory
+    result = utils.buffer_dir()
+  end
+  return result
+end
+
+local findFromRoot = function(opts)
+  opts = opts or {}
+  opts.cwd = getProjectWorkingDirectory()
+  require'telescope.builtin'.find_files(opts)
+end
+
+local searchFromRoot = function(opts)
+  opts = opts or {}
+  opts.cwd = getProjectWorkingDirectory()
+
+  require('telescope.builtin').live_grep(opts)
+end
+
+
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>,", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
-vim.keymap.set("n", "<leader>/", require("telescope.builtin").live_grep,
+vim.keymap.set("n", "<leader>/", searchFromRoot,
   { desc = "[/] Fuzzily search in current buffer" })
 
 
-vim.keymap.set("n", "<leader>ff", require("ranger-nvim").open, { desc = "[Find] [Files] from current directory"})
-vim.keymap.set("n", "<leader>pf", require("telescope.builtin").find_files, { desc = "[P]project [F]iles" })
+vim.keymap.set("n", "<leader>fr", require("ranger-nvim").open, { desc = "[Find] [Ranger] from current directory"})
+vim.keymap.set("n", "<leader>ff", function() require("telescope.builtin").find_files({ cwd = utils.buffer_dir() }) end, { desc = "[Find] [Files] from current directory"})
+vim.keymap.set("n", "<leader>pf", findFromRoot, { desc = "[P]project [F]iles" })
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind [H]elp" })
 vim.keymap.set("n", "<leader>fw", require("telescope.builtin").grep_string, { desc = "[F]ind current [W]ord" })
 vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[F]ind [D]iagnostics" })
