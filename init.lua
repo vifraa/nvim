@@ -144,9 +144,15 @@ require("lazy").setup({
       require("ranger-nvim").setup({ replace_netrw = true })
     end,
   },
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies= {
+      "nvim-tree/nvim-web-devicons"
+    }
+  },
 
-  require 'plugins.oil',
   require 'plugins.nvim-tree',
+  require 'plugins.oil',
   require 'plugins.nvim-autopairs',
   require 'plugins.lazygit'
 }, {})
@@ -309,10 +315,10 @@ vim.keymap.set("n", "<leader>gG", ":LazyGitFilterCurrentFile<cr>",
 
 -- FileTree keymaps
 local api = require("nvim-tree.api")
-vim.keymap.set("n", "<leader>fe", api.tree.toggle, { desc = "[F]ile [E]xplorer" })
+vim.keymap.set("n", "<leader>pt", api.tree.toggle, { desc = "[F]ile [T]ree" })
 -- Cant get below to work so do the hackish way for now.
 -- vim.keymap.set("n", "<leader>fE", api.tree.toggle({find_file = true, focus = true}), { desc = "[F]ile [E]xplorer (current file)" })
-vim.keymap.set("n", "<leader>fE", ":NvimTreeFindFileToggle<cr>", { desc = "[F]ile [E]xplorer (current file)" })
+vim.keymap.set("n", "<leader>pT", ":NvimTreeFindFileToggle<cr>", { desc = "[F]ile [T]ree (current file)" })
 
 
 
