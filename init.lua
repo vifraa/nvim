@@ -146,9 +146,18 @@ require("lazy").setup({
   },
   {
     "nvim-tree/nvim-tree.lua",
-    dependencies= {
+    dependencies = {
       "nvim-tree/nvim-web-devicons"
     }
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
   },
 
   require 'plugins.nvim-tree',
@@ -282,7 +291,7 @@ end
 local findFromRoot = function(opts)
   opts = opts or {}
   opts.cwd = getProjectWorkingDirectory()
-  require'telescope.builtin'.find_files(opts)
+  require 'telescope.builtin'.find_files(opts)
 end
 
 local searchFromRoot = function(opts)
@@ -301,8 +310,9 @@ vim.keymap.set("n", "<leader>/", searchFromRoot,
   { desc = "[/] Fuzzily search in current buffer" })
 
 
-vim.keymap.set("n", "<leader>fr", require("ranger-nvim").open, { desc = "[Find] [Ranger] from current directory"})
-vim.keymap.set("n", "<leader>ff", function() require("telescope.builtin").find_files({ cwd = utils.buffer_dir() }) end, { desc = "[Find] [Files] from current directory"})
+vim.keymap.set("n", "<leader>fr", require("ranger-nvim").open, { desc = "[Find] [Ranger] from current directory" })
+vim.keymap.set("n", "<leader>ff", function() require("telescope.builtin").find_files({ cwd = utils.buffer_dir() }) end,
+  { desc = "[Find] [Files] from current directory" })
 vim.keymap.set("n", "<leader>pf", findFromRoot, { desc = "[P]project [F]iles" })
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind [H]elp" })
 vim.keymap.set("n", "<leader>fw", require("telescope.builtin").grep_string, { desc = "[F]ind current [W]ord" })
